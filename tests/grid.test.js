@@ -52,4 +52,9 @@ describe('Grid class', () => {
     grid.positionEndOfShip(battleship4Double)
     expect(grid.getCurrentState()['C']).toEqual(['-','-','-','O','-','-','-','-','-','-'])
   })
+  it('can position a 3-boat horizontally on the board changing relevant position from - to O', () => {
+    battleship3Double.populateShip(battleship3Double.size)
+    grid.positionShipHorizontally(battleship3Double)
+    expect(grid.getCurrentState()['B']).toEqual(['O','O','O','-','-','-','-','-','-','-'])
+  })
 })
