@@ -1,4 +1,4 @@
-const Battleship = require('../lib/battleship.js')
+const Battleship = require('../lib/battleship.cjs')
 
 describe('Battleship class', () => {
   let battleship;
