@@ -33,26 +33,6 @@ describe('Grid class', () => {
   it('has an array of nested arrays that store the state of the game', () => {
    expect(grid.getCurrentState()).toEqual(gridLayout)
   })
-  it('can change the start position of a 2-boat on the grid to an O', () => {
-    battleship2Double.populateShip(battleship2Double.size)
-    grid.positionStartOfShip(battleship2Double)
-    expect(grid.getCurrentState()[0]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
-  })
-  it('can change the end position of a 2-boat on the grid to an O', () => {
-    battleship2Double.populateShip(battleship2Double.size)
-    grid.positionEndOfShip(battleship2Double)
-    expect(grid.getCurrentState()[0]).toEqual(['-','O','-','-','-','-','-','-','-','-'])
-  })
-  it('can change the start position of a 4-boat on the grid to an O', () => {
-    battleship4Double.populateShip(battleship4Double.size)
-    grid.positionStartOfShip(battleship4Double)
-    expect(grid.getCurrentState()[2]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
-  })
-  it('can change the end position of a 4-boat on the grid to an O', () => {
-    battleship2Double.populateShip(battleship4Double.size)
-    grid.positionEndOfShip(battleship4Double)
-    expect(grid.getCurrentState()[2]).toEqual(['-','-','-','O','-','-','-','-','-','-'])
-  })
   it('can position a 3-boat horizontally on the board changing relevant position from - to O', () => {
     battleship3Double.populateShip(battleship3Double.size)
     grid.positionShipHorizontally(battleship3Double)
@@ -70,5 +50,9 @@ describe('Grid class', () => {
     expect(grid.getCurrentState()[1]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
     expect(grid.getCurrentState()[2]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
     expect(grid.getCurrentState()[3]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
+  })
+  it('can change a blank space to an M for a miss', ()  => {
+    grid.missedShot('A1')
+    expect(grid.getCurrentState()[0]).toEqual(['M','-','-','-','-','-','-','-','-','-'])
   })
 })
