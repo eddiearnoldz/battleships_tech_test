@@ -23,11 +23,11 @@ describe('Grid class', () => {
       ['-','-','-','-','-','-','-','-','-','-'],
       ['-','-','-','-','-','-','-','-','-','-'],
     ]
-     battleship2Double = new Battleship(2, 1, ['A1, A2'] )
-     battleship3Double = new Battleship(3, 1, ['B1, B3'] )
-     battleship4Double = new Battleship(4, 1, ['C1, C4'] )
-     battleship5Double = new Battleship(5, 1, ['D1, D5'] )
-     verticalbattleship4Double = new Battleship(4, 1, ['A1, D1'] )
+     battleship2Double = new Battleship(2, ['A1, A2'] )
+     battleship3Double = new Battleship(3, ['B1, B3'] )
+     battleship4Double = new Battleship(4, ['C1, C4'] )
+     battleship5Double = new Battleship(5, ['D1, D5'] )
+     verticalbattleship4Double = new Battleship(4, ['A1, D1'] )
   });
 
   it('has an array of nested arrays that store the state of the game', () => {
