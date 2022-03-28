@@ -55,4 +55,8 @@ describe('Grid class', () => {
     grid.missedShot('A1')
     expect(grid.getCurrentState()[0]).toEqual(['M','-','-','-','-','-','-','-','-','-'])
   })
+  it('can change a space to an X for a hit', () => {
+    grid.hitShot('A1')
+    expect(grid.getCurrentState()[0]).toEqual(['X','-','-','-','-','-','-','-','-','-'])
+  })
 })
