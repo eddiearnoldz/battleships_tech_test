@@ -59,8 +59,9 @@ describe('Grid class', () => {
     grid.hitShot('A1')
     expect(grid.getCurrentState()[0]).toEqual(['X','-','-','-','-','-','-','-','-','-'])
   })
-  it('can print out the current state of the board', () =>{
-    grid.positionShipVerticaly(verticalbattleship4Double)
-    grid.positionShipHorizontally(battleship3Double)
+  it('stores the ship once it has been plced on the grid', () => {
+    grid.positionShip(verticalbattleship4Double)
+    expect(grid.getShips().length).toBe(1)
   })
+
 })

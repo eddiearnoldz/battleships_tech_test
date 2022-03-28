@@ -5,56 +5,12 @@ const rl = readline.createInterface({input: process.stdin,output: process.stdout
 
 const grid1 = new Grid
 const grid2 = new Grid
-const destroyerPosition = () => {
+const shipPositionPlayer1 = (type, size, example) => {
   return new Promise((resolve, reject) => {
-    rl.question("In which position would you like to place the front of your Destroyer? e.g A1, A2 ", (answer) => {
+    rl.question(`On which coordinates would you like to place the your ${type}? e.g ${example}\n`, (answer) => {
       const Position = answer
-      const destroyerP1 = new Battleship(2, 1, [Position])
-      grid1.positionShip(destroyerP1)
-      console.table(grid1.getCurrentState())
-      resolve()
-    })
-  })
-}
-const submarinePosition = () => {
-  return new Promise((resolve, reject) => {
-    rl.question("In which position would you like to place the front of your Destroyer? e.g A1, A3 ", (answer) => {
-      const Position = answer
-      const submarineP1 = new Battleship(3, 1, [Position])
-      grid1.positionShip(submarineP1)
-      console.table(grid1.getCurrentState())
-      resolve()
-    })
-  })
-}
-const cruiserPosition = () => {
-  return new Promise((resolve, reject) => {
-    rl.question("In which position would you like to place the front of your Destroyer? e.g A1, A3 ", (answer) => {
-      const Position = answer
-      const cruiserP1 = new Battleship(3, 1, [Position])
-      grid1.positionShip(cruiserP1)
-      console.table(grid1.getCurrentState())
-      resolve()
-    })
-  })
-}
-const battleshipPosition = () => {
-  return new Promise((resolve, reject) => {
-    rl.question("In which position would you like to place the front of your Destroyer? e.g A1, A4 ", (answer) => {
-      const Position = answer
-      const battleshipP1 = new Battleship(4, 1, [Position])
-      grid1.positionShip(battleshipP1)
-      console.table(grid1.getCurrentState())
-      resolve()
-    })
-  })
-}
-const carrierPosition = () => {
-  return new Promise((resolve, reject) => {
-    rl.question("In which position would you like to place the front of your Carrier? e.g A1, A5 ", (answer) => {
-      const Position = answer
-      const destroyerP1 = new Battleship(5, 1, [Position])
-      grid1.positionShip(destroyerP1)
+      grid1.ships.push(new Battleship(size, 1, [Position]))
+      grid1.positionShip(new Battleship(size, 1, [Position]))
       console.table(grid1.getCurrentState())
       resolve()
     })
@@ -67,11 +23,11 @@ const renderStartingBoard = () =>{
 
 const game = async () => {
   renderStartingBoard()
-  await destroyerPosition()
-  await submarinePosition()
-  await cruiserPosition()
-  await battleshipPosition()
-  await carrierPosition()
+  await shipPositionPlayer1('Destroyer', 2, 'A1, A2')
+  await shipPositionPlayer1('Submarine', 3, 'A1, A3')
+  await shipPositionPlayer1('Cruiser', 3, 'A1, A3')
+  await shipPositionPlayer1('Battleship', 4, 'A1, A4')
+  await shipPositionPlayer1('Carrier', 5, 'A1, A5')
 }
 
 game()
