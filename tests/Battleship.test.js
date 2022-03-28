@@ -20,5 +20,13 @@ describe('Battleship class', () => {
     battleship.populateShip(3)
     expect(battleship.getDamage()).toEqual(['O', 'O', 'O'])
   })
+  it('returns the size of the ship', () => {
+    expect(battleship.getSize()).toBe(3)
+  })
+  it('changes the damage of the ship at position it was hit', () => {
+    battleship.populateShip(3)
+    battleship.hitShip(1)
+    expect(battleship.getDamage()).toEqual(['O', 'X', 'O'])
+  })
 
 })

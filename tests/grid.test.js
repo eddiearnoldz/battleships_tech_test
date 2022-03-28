@@ -11,22 +11,23 @@ describe('Grid class', () => {
 
   beforeEach(() => {
     grid = new Grid;
-    gridLayout = {
-      'A': ['-','-','-','-','-','-','-','-','-','-'],
-      'B': ['-','-','-','-','-','-','-','-','-','-'],
-      'C': ['-','-','-','-','-','-','-','-','-','-'],
-      'D': ['-','-','-','-','-','-','-','-','-','-'],
-      'E': ['-','-','-','-','-','-','-','-','-','-'],
-      'F': ['-','-','-','-','-','-','-','-','-','-'],
-      'G': ['-','-','-','-','-','-','-','-','-','-'],
-      'H': ['-','-','-','-','-','-','-','-','-','-'],
-      'I': ['-','-','-','-','-','-','-','-','-','-'],
-      'J': ['-','-','-','-','-','-','-','-','-','-'],
-  }
+    gridLayout = [
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+      ['-','-','-','-','-','-','-','-','-','-'],
+    ]
      battleship2Double = new Battleship(2, 1, ['A1', 'A2'] )
      battleship3Double = new Battleship(3, 1, ['B1', 'B3'] )
      battleship4Double = new Battleship(4, 1, ['C1', 'C4'] )
      battleship5Double = new Battleship(5, 1, ['D1', 'D5'] )
+     verticalbattleship4Double = new Battleship(4, 1, ['A1', 'D1'] )
   });
 
   it('has an array of nested arrays that store the state of the game', () => {
@@ -35,26 +36,39 @@ describe('Grid class', () => {
   it('can change the start position of a 2-boat on the grid to an O', () => {
     battleship2Double.populateShip(battleship2Double.size)
     grid.positionStartOfShip(battleship2Double)
-    expect(grid.getCurrentState()['A']).toEqual(['O','-','-','-','-','-','-','-','-','-'])
+    expect(grid.getCurrentState()[0]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
   })
   it('can change the end position of a 2-boat on the grid to an O', () => {
     battleship2Double.populateShip(battleship2Double.size)
     grid.positionEndOfShip(battleship2Double)
-    expect(grid.getCurrentState()['A']).toEqual(['-','O','-','-','-','-','-','-','-','-'])
+    expect(grid.getCurrentState()[0]).toEqual(['-','O','-','-','-','-','-','-','-','-'])
   })
   it('can change the start position of a 4-boat on the grid to an O', () => {
     battleship4Double.populateShip(battleship4Double.size)
     grid.positionStartOfShip(battleship4Double)
-    expect(grid.getCurrentState()['C']).toEqual(['O','-','-','-','-','-','-','-','-','-'])
+    expect(grid.getCurrentState()[2]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
   })
   it('can change the end position of a 4-boat on the grid to an O', () => {
     battleship2Double.populateShip(battleship4Double.size)
     grid.positionEndOfShip(battleship4Double)
-    expect(grid.getCurrentState()['C']).toEqual(['-','-','-','O','-','-','-','-','-','-'])
+    expect(grid.getCurrentState()[2]).toEqual(['-','-','-','O','-','-','-','-','-','-'])
   })
   it('can position a 3-boat horizontally on the board changing relevant position from - to O', () => {
     battleship3Double.populateShip(battleship3Double.size)
     grid.positionShipHorizontally(battleship3Double)
-    expect(grid.getCurrentState()['B']).toEqual(['O','O','O','-','-','-','-','-','-','-'])
+    expect(grid.getCurrentState()[1]).toEqual(['O','O','O','-','-','-','-','-','-','-'])
+  })
+  it('can position a 5-boat horizontally on the board changing relevant position from - to O', () => {
+    battleship5Double.populateShip(battleship5Double.size)
+    grid.positionShipHorizontally(battleship5Double)
+    expect(grid.getCurrentState()[3]).toEqual(['O','O','O','O','O','-','-','-','-','-'])
+  })
+  it('can position a 4-boat vertically on the board changing relevant position from - to O', () => {
+    verticalbattleship4Double.populateShip(verticalbattleship4Double.size)
+    grid.positionShipVerticaly(verticalbattleship4Double)
+    expect(grid.getCurrentState()[0]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
+    expect(grid.getCurrentState()[1]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
+    expect(grid.getCurrentState()[2]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
+    expect(grid.getCurrentState()[3]).toEqual(['O','-','-','-','-','-','-','-','-','-'])
   })
 })
