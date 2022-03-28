@@ -59,6 +59,15 @@ I would like to play a two-player game
 # Requirements
 
 # Initial Thoughts
+- we need two boards to play on. These could be a grid of 10 nested arrays with 10 elements in them. grid first line [ -, -, -, M, -, -, -, -, O, X ]
+- each value on the board can be either 'blank', 'ship', 'hit', or 'missed'
+- the boats can be a class that have different sizes passed in the constructor,who owns them and how damaged they are e.g. damage = [O, O, O, X, X] ( X = hit)
+- There should be 4 boats of 2, 3, 4and 5 length 
+- the game class will decide who's turn it is, where the boats are positioned and what commands each player makes
+- there should be prmopts in teh CLI such as 'You hit a ship', 'You sunk a ship', 'You missed'
+- directions and ship placement can be passed in a simple two character command e.g. A5 for fifth element of 1st array (A),
+  this would then be the same for positioning the ships. where would you like the boat t start? 'B3' and 'where does it end?' 'B5'
+- must catch errors of non existent grid command 'A11 does not exist', 'A ship is already on C5'
 
 # Dependencies
 
